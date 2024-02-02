@@ -223,7 +223,7 @@ class YOLOPAFPN(nn.Module):
 
     def forward(self, input):
         if self.training:
-            input, clear_x = input.split((4, 4), dim=0)  # split haze and clear images (Batchsize, Batchsize)
+            input, clear_x = input.split((16, 16), dim=0)  # split haze and clear images (Batchsize, Batchsize)
         out_features            = self.backbone.forward(input)
         [feat1, feat2, feat3]   = [out_features[f] for f in self.in_features]
         #-------------------------------------------#
